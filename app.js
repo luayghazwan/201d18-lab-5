@@ -52,9 +52,15 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a,b,c){ //eslint-disable-line
-  var sumResult = testSum(a,b);
-  var mNsResult = testMultiply(sum,c);
-  return [sumResult,mNsResult,'4 and 7 and 5 sum to 16.','The product of 4 and 7 and 5 is 140.'];
+  var sResult1 = sum(a,b);
+  var sResult2 = sum(sResult1[0],c);
+
+  var pResult1 = multiply(a,b);
+  var pResult2 = multiply(pResult1[0],c);
+
+  var messageSum = a + ' and ' + b + ' and ' + c + ' sum to ' + sResult2[0] + '.';
+  var messageMul = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + pResult2[0] + '.';
+  return [sResult2, pResult2, messageSum, messageMul];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
@@ -76,9 +82,10 @@ Test this function by hand in the console to get it working, and when you think 
 var testArray = [2,3,4]; //eslint-disable-line
 
 function sumArray(testArray){ //eslint-disable-line
-  var resultSum = testSum(testArray);
-  var message = '2,3,4 was passed in as an array of numbers, and 9 is their sum.';
-  return [resultSum,message];
+  var resultSum1 = sum(testArray[0],testArray[1]);
+  var resultSum2 = sum(resultSum1[0], testArray[2]);
+  var message = testArray[0] + ',' + testArray[1] + ',' + testArray[2] + ' was passed in as an array of numbers, and ' + resultSum2[0] + ' is their sum.';
+  return [resultSum2[0], message];
 }
 
 // Here is the test for sumArray(); uncomment it to run it
@@ -98,11 +105,15 @@ IMPORTANT DETAIL: You may not use the arithmetic operator * in this function. To
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testMultiplyArray() function and see if the test passes.*/
 
 // Write your code here
-function multiplyArray(testArray){ //eslint-disable-line
-
+var mArray = [2,3,4];
+function multiplyArray(mArray){ //eslint-disable-line
+  var resultM1 = multiply(mArray[0],mArray[1]);
+  var resultM2 = multiply(resultM1[0], mArray[2]);
+  var message = 'The numbers ' + mArray[0] + ',' + mArray[1] + ',' + mArray[2] + ' have a product of 24.';
+  return [resultM2[0], message];
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray([2,3,4]);
+testMultiplyArray([2,3,4]);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. You're done! Submit the link to the repo following the instructions in Canvas.
