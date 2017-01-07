@@ -52,9 +52,15 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a,b,c){ //eslint-disable-line
-  var sumResult = testSum(a,b);
-  var mNsResult = testMultiply(sum,c);
-  return [sumResult,mNsResult,'4 and 7 and 5 sum to 16.','The product of 4 and 7 and 5 is 140.'];
+  var sResult1 = sum(a,b);
+  var sResult2 = sum(sResult1[0],c);
+
+  var pResult1 = multiply(a,b);
+  var pResult2 = multiply(pResult1[0],c);
+
+  var messageSum = a + ' and ' + b + ' and ' + c + ' sum to ' + sResult2[0] + '.';
+  var messageMul = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + pResult2[0] + '.';
+  return [sResult2, pResult2, messageSum, messageMul];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
